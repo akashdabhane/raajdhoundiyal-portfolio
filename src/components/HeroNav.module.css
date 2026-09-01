@@ -1,0 +1,413 @@
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  padding: 20px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navScrolled {
+  background-color: rgba(20, 20, 20, 0.95);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.navLinks {
+  display: flex;
+  gap: 40px;
+}
+
+.navLink {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navLink:after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: #ff6b35;
+}
+
+.navLink:hover:after {
+  width: 100%;
+}
+
+.burgerMenu {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.burgerMenu i {
+  color: #ffffff;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.burgerMenu:hover i {
+  color: #ff6b35;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobileMenu.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileNavLink {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: #ff6b35;
+}
+
+/* Hero Section */
+.heroCarousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1s ease-in-out;
+  transform: none;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+  transform: none;
+}
+
+.slideContent {
+  text-align: center;
+  color: #fff;
+  max-width: 1200px;
+  padding: 0 20px;
+  z-index: 3;
+}
+
+.upperText {
+  font-family: var(--font-playfair), serif;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 20px;
+  opacity: 0;
+}
+
+.slide.active .upperText {
+  animation: slideInDown 0.6s ease-out 0.2s forwards;
+}
+
+.mainText {
+  font-family: var(--font-playfair), serif;
+  font-size: 75px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.wave span span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.slide.active .wave span span {
+  animation: waveIn 0.4s forwards;
+}
+
+.subText {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  opacity: 0;
+}
+
+.slide.active .subText {
+  animation: slideInUp 0.6s ease-out 0.5s forwards;
+}
+
+.cta {
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.slide.active .cta {
+  animation: slideInUp 0.6s ease-out 0.7s forwards;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+}
+
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navArrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prevArrow {
+  left: 30px;
+}
+
+.nextArrow {
+  right: 30px;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes waveIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Breakpoints matching reference CSS */
+@media (max-width: 1400px) {
+  .navbar {
+    padding: 20px 100px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 15px 40px;
+    height: 80px;
+  }
+  .logoImg {
+    width: 150px;
+  }
+  .slide {
+    background-position: 50%;
+    background-size: auto 100%;
+  }
+  .slide:first-child {
+    background-position: 70%;
+  }
+  .mainText {
+    font-size: 56px;
+  }
+  .upperText {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+    height: 70px;
+  }
+  .navLinks {
+    display: none;
+  }
+  .burgerMenu {
+    display: block;
+  }
+  .burgerMenu i {
+    color: #fff;
+  }
+  .slide {
+    background-position: 50%;
+    background-size: auto 100%;
+  }
+  .slide:first-child {
+    background-position: 70%;
+  }
+  .slide:nth-child(2) {
+    background-position: 65%;
+  }
+  .slide:nth-child(3) {
+    background-position: 30%;
+  }
+  .mainText {
+    font-size: 40px;
+  }
+  .upperText {
+    font-size: 22px;
+  }
+  .subText {
+    font-size: 14px;
+  }
+  .cta {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+  .prevArrow {
+    left: 15px;
+  }
+  .nextArrow {
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroCarousel {
+    height: 90vh;
+  }
+  .slide {
+    background-position: 50%;
+    background-size: auto 90%;
+  }
+  .slide:first-child {
+    background-position: 70%;
+  }
+  .slide:nth-child(2) {
+    background-position: 65%;
+  }
+  .slide:nth-child(3) {
+    background-position: 30%;
+  }
+  .mainText {
+    font-size: 25px;
+    line-height: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .upperText {
+    font-size: 20px;
+  }
+  .subText {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .cta {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
