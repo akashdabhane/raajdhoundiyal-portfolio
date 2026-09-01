@@ -109,13 +109,13 @@ export default function WorksSection() {
           ))}
         </div>
 
-        {filteredWorks.length > 12 && (
+        {!showAll && filteredWorks.length > 12 && (
           <div className={styles.viewMoreContainer}>
             <button
               className={styles.filterButton}
-              onClick={() => setShowAll((prev) => !prev)}
+              onClick={() => setShowAll(true)}
             >
-              {showAll ? "View Less" : "View More"}
+              View More
             </button>
           </div>
         )}

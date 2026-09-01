@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Noto_Sans } from "next/font/google";
+import { Playfair_Display, Noto_Sans, Merriweather } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
@@ -12,6 +12,13 @@ const playfair = Playfair_Display({
 const notoSans = Noto_Sans({
   subsets: ["latin"],
   variable: "--font-noto",
+  display: "swap",
+});
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+  variable: "--font-merriweather",
   display: "swap",
 });
 
@@ -31,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${notoSans.variable}`}
+      className={`${playfair.variable} ${notoSans.variable} ${merriweather.variable}`}
     >
       <head>
         <link

@@ -247,3 +247,14 @@
     font-size: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .filterContainer {
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    overflow-x: auto;
+  }
+  .filterButton {
+    flex-shrink: 0;
+  }
+}
