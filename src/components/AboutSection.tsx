@@ -1,13 +1,44 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./AboutSection.module.css";
 
 export default function AboutSection() {
+  const [animated, setAnimated] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimated(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="about" className={styles.aboutSection}>
+    <section id="about" ref={sectionRef} className={styles.aboutSection}>
       <div className={styles.container}>
         <div className={styles.aboutGrid}>
-          <div className={styles.contentSection}>
+          <div
+            className={`${styles.contentSection} ${
+              animated ? styles.animate : ""
+            }`}
+          >
             <h2 className={styles.title}>
               A Journey From A Blank Slate To My Extraordinary Story!
             </h2>
@@ -43,7 +74,11 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className={styles.imageSection}>
+          <div
+            className={`${styles.imageSection} ${
+              animated ? styles.animate : ""
+            }`}
+          >
             <div className={styles.imageContainer}>
               <div className={styles.glowBorder}></div>
               <Image

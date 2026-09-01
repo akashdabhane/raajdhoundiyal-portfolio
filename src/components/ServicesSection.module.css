@@ -4,6 +4,7 @@
   color: #333333;
   padding: 80px 20px;
   width: 100%;
+  overflow: hidden;
 }
 
 .container {
@@ -46,7 +47,25 @@
 .serviceCard {
   text-align: center;
   padding: 15px;
-  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+  will-change: transform, opacity;
+}
+
+.serviceCard.bounceIn {
+  animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .iconContainer {
@@ -56,11 +75,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
   transition: transform 0.3s ease;
 }
 
 .serviceCard:hover .iconContainer {
-  transform: translateY(-8px) scale(1.05);
+  transform: translateY(-5px);
 }
 
 .serviceIcon {
