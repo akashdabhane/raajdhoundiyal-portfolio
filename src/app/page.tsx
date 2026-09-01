@@ -8,6 +8,7 @@ import DeliveredProjects from "@/components/DeliveredProjects";
 import UpcomingProjects from "@/components/UpcomingProjects";
 import MomentsSection from "@/components/MomentsSection";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <UpcomingProjects />
       <MomentsSection />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

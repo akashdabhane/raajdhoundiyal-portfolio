@@ -30,6 +30,7 @@
 }
 
 .card1 {
+  display: block;
   background: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 12px;

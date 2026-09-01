@@ -62,13 +62,13 @@ export default function ContactPage() {
             HAVE A NEW PROJECT? WE&apos;D LOVE TO HEAR FROM YOU
           </p>
 
-          <div className={styles.card1}>
+          <a href="mailto:raajdhoundiyal@gmail.com" className={styles.card1}>
             <span className={styles.icon}>
               <i className="fas fa-envelope"></i>
             </span>
             <h3>Gmail</h3>
             <p>raajdhoundiyal@gmail.com</p>
-          </div>
+          </a>
 
           <h2 className={styles.formHeading}>Leave us a message</h2>
           <p className={styles.subheading}>LET&apos;S MAKE GREAT THINGS TOGETHER</p>

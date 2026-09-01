@@ -1,0 +1,50 @@
+.scrollTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  background-color: #8a8a8a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease, visibility 0.3s;
+}
+
+.scrollTop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scrollTop:hover {
+  background-color: #757575;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .scrollTop {
+    right: 14px;
+    bottom: 14px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
