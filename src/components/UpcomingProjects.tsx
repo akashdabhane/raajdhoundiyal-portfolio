@@ -9,6 +9,7 @@ const upcomingProjectsData = [
   { id: 2, title: "Upcoming 2", image: "/upcoming-10.jpg" },
   { id: 3, title: "Upcoming 3", image: "/upcoming-11.jpg" },
   { id: 4, title: "Upcoming 4", image: "/upcoming-12.jpg" },
+  { id: 5, title: "Upcoming 5", image: "/upcoming-13.jpg" },
 ];
 
 export default function UpcomingProjects() {
