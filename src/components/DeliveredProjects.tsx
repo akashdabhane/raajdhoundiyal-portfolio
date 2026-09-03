@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import styles from "./Projects.module.css";
+import styles from "./DeliveredProjects.module.css";
 
 const deliveredProjectsData = [
   { id: 1, title: "Project 1", image: "/delivered-2.jpg" },
