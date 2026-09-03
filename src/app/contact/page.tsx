@@ -77,7 +77,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar light />
       <main className={styles.contactPage}>
         <div className={styles.contactContainer}>
           <h1 className={styles.heading}>Contact Details</h1>

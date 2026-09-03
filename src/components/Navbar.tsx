@@ -5,7 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./HeroNav.module.css";
 
-export default function Navbar() {
+interface NavbarProps {
+  light?: boolean;
+}
+
+export default function Navbar({ light = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -31,7 +35,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`${styles.navbar} ${scrolled ? styles.navScrolled : ""}`}>
+      <nav
+        className={`${styles.navbar} ${
+          light ? styles.navbarLight : scrolled ? styles.navScrolled : ""
+        }`}
+      >
         <div className={styles.logo}>
           <Link href="/#hero">
             <Image
@@ -46,16 +54,28 @@ export default function Navbar() {
         </div>
 
         <div className={styles.navLinks}>
-          <Link href="/#about" className={styles.navLink}>
+          <Link
+            href="/#about"
+            className={`${styles.navLink} ${light ? styles.navLinkLight : ""}`}
+          >
             ABOUT ME
           </Link>
-          <Link href="/#work" className={styles.navLink}>
+          <Link
+            href="/#work"
+            className={`${styles.navLink} ${light ? styles.navLinkLight : ""}`}
+          >
             MY WORK
           </Link>
-          <Link href="/#gallery" className={styles.navLink}>
+          <Link
+            href="/#gallery"
+            className={`${styles.navLink} ${light ? styles.navLinkLight : ""}`}
+          >
             GALLERY
           </Link>
-          <Link href="/contact" className={styles.navLink}>
+          <Link
+            href="/contact"
+            className={`${styles.navLink} ${light ? styles.navLinkLight : ""}`}
+          >
             CONTACT ME
           </Link>
         </div>
