@@ -12,7 +12,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white relative">
+    <main className="min-h-screen bg-black text-white relative overflow-x-hidden">
       <Navbar />
       <Hero />
       <AboutSection />

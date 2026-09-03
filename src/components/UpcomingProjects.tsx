@@ -5,11 +5,10 @@ import Image from "next/image";
 import styles from "./Projects.module.css";
 
 const upcomingProjectsData = [
-  { id: 1, title: "Upcoming 1", image: "/upcoming-1.jpg" },
-  { id: 2, title: "Upcoming 2", image: "/upcoming-2.jpg" },
-  { id: 3, title: "Upcoming 3", image: "/upcoming-3.jpg" },
-  { id: 4, title: "Upcoming 7", image: "/upcoming-7.jpg" },
-  { id: 5, title: "Upcoming 8", image: "/upcoming-8.jpg" },
+  { id: 1, title: "Upcoming 1", image: "/upcoming-9.jpg" },
+  { id: 2, title: "Upcoming 2", image: "/upcoming-10.jpg" },
+  { id: 3, title: "Upcoming 3", image: "/upcoming-11.jpg" },
+  { id: 4, title: "Upcoming 4", image: "/upcoming-12.jpg" },
 ];
 
 export default function UpcomingProjects() {

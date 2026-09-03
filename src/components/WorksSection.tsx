@@ -13,6 +13,7 @@ const categoriesList: WorkCategory[] = [
   "EDITING",
   "PRODUCTION DESIGN",
   "WRITING",
+  "AI FILMS",
 ];
 
 export default function WorksSection() {

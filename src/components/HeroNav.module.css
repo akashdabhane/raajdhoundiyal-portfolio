@@ -424,7 +424,7 @@
     background-size: auto 100%;
   }
   .slide:first-child {
-    background-position: 70%;
+    background-position: 80%;
   }
   .slide:nth-child(2) {
     background-position: 65%;
@@ -444,6 +444,11 @@
   .cta {
     padding: 12px 28px;
     font-size: 14px;
+  }
+  .navArrow {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
   }
   .prevArrow {
     left: 15px;
@@ -477,7 +482,7 @@
     background-size: auto 90%;
   }
   .slide:first-child {
-    background-position: 70%;
+    background-position: 80%;
   }
   .slide:nth-child(2) {
     background-position: 65%;
@@ -502,5 +507,10 @@
   .cta {
     padding: 10px 20px;
     font-size: 12px;
+  }
+  .navArrow {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
   }
 }

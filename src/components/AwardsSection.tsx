@@ -63,8 +63,8 @@ export default function AwardsSection() {
               <Image
                 src={award.src}
                 alt={award.alt}
-                width={300}
-                height={200}
+                width={400}
+                height={400}
                 className={styles.awardImage}
               />
             </div>
@@ -81,7 +81,7 @@ export default function AwardsSection() {
               src={awardsData[currentIndex].src}
               alt={awardsData[currentIndex].alt}
               width={300}
-              height={200}
+              height={300}
               className={styles.awardImage}
             />
           </div>
