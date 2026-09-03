@@ -16,16 +16,18 @@ const categoriesList: WorkCategory[] = [
   "AI FILMS",
 ];
 
+const PAGE_SIZE = 12;
+
 export default function WorksSection() {
   const [activeCategory, setActiveCategory] = useState<WorkCategory>("ALL");
-  const [showAll, setShowAll] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const filteredWorks = worksData.filter((work) => {
     if (activeCategory === "ALL") return true;
     return work.categories.includes(activeCategory);
   });
 
-  const visibleWorks = showAll ? filteredWorks : filteredWorks.slice(0, 12);
+  const visibleWorks = filteredWorks.slice(0, visibleCount);
 
   return (
     <section id="work" className={styles.workSection}>
@@ -44,7 +46,7 @@ export default function WorksSection() {
               }`}
               onClick={() => {
                 setActiveCategory(cat);
-                setShowAll(false);
+                setVisibleCount(PAGE_SIZE);
               }}
             >
               {cat}
@@ -110,11 +112,11 @@ export default function WorksSection() {
           ))}
         </div>
 
-        {!showAll && filteredWorks.length > 12 && (
+        {visibleCount < filteredWorks.length && (
           <div className={styles.viewMoreContainer}>
             <button
               className={styles.filterButton}
-              onClick={() => setShowAll(true)}
+              onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
             >
               View More
             </button>
