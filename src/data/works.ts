@@ -5,7 +5,8 @@ export type WorkCategory =
   | "DIRECTION"
   | "EDITING"
   | "PRODUCTION DESIGN"
-  | "WRITING";
+  | "WRITING"
+  | "AI FILMS";
 
 export type WorkCategorySlug =
   | "camera"
@@ -13,7 +14,8 @@ export type WorkCategorySlug =
   | "direction"
   | "editing"
   | "production-design"
-  | "writing";
+  | "writing"
+  | "ai-films";
 
 export interface Work {
   id: string;
@@ -32,6 +34,7 @@ export const CATEGORY_MAP: Record<WorkCategorySlug, WorkCategory> = {
   "editing": "EDITING",
   "production-design": "PRODUCTION DESIGN",
   "writing": "WRITING",
+  "ai-films": "AI FILMS",
 };
 
 export const CATEGORY_SLUG_MAP: Record<WorkCategory, WorkCategorySlug> = {
@@ -42,6 +45,7 @@ export const CATEGORY_SLUG_MAP: Record<WorkCategory, WorkCategorySlug> = {
   "EDITING": "editing",
   "PRODUCTION DESIGN": "production-design",
   "WRITING": "writing",
+  "AI FILMS": "ai-films",
 };
 
 export const worksData: Work[] = [
@@ -141,8 +145,8 @@ export const worksData: Work[] = [
     title: "Tathaastu – Official Trailer",
     categories: ["EDITING"],
     categorySlugs: ["editing"],
-    thumbnail: "https://img.youtube.com/vi/TNnLZDkLe0c/hqdefault.jpg",
-    youtubeId: "TNnLZDkLe0c",
+    thumbnail: "https://img.youtube.com/vi/kPloeVqWQmU/hqdefault.jpg",
+    youtubeId: "kPloeVqWQmU",
   },
   {
     id: "india-without-water-production-design",
