@@ -34,7 +34,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 .header {
@@ -189,7 +189,7 @@
     padding: 0;
   }
   .awardsSection {
-    padding: 50px 0;
+    padding: 60px 0;
   }
   .title {
     font-size: 2rem;
@@ -204,7 +204,7 @@
     display: flex;
   }
   .awardImage {
-    width: 170px;
+    width: 200px;
     max-width: 500px;
     max-height: 400px;
     margin-bottom: 40px;
