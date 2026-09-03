@@ -491,7 +491,10 @@
     background-size: auto 90%;
   }
   .slide:first-child {
-    background-position: 80%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+      url("/hero-01-mobile.jpg") !important;
+    background-position: center;
+    background-size: cover;
   }
   .slide:nth-child(2) {
     background-position: 65%;
