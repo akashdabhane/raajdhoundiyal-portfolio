@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import styles from "./HeroNav.module.css";
 
@@ -42,23 +42,37 @@ const slides: HeroSlide[] = [
   },
 ];
 
+const AUTO_ADVANCE_INTERVAL = 6000;
+
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   }, []);
 
+  const restartAutoAdvance = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(nextSlide, AUTO_ADVANCE_INTERVAL);
+  }, [nextSlide]);
+
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    restartAutoAdvance();
+  };
+
+  const handleNextClick = () => {
+    nextSlide();
+    restartAutoAdvance();
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [nextSlide]);
+    restartAutoAdvance();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [restartAutoAdvance]);
 
   return (
     <section id="hero" className={styles.heroCarousel}>
@@ -113,7 +127,7 @@ export default function Hero() {
           <i className="fa fa-chevron-left"></i>
         </span>
       </button>
-      <button className={`${styles.navArrow} ${styles.nextArrow}`} onClick={nextSlide} aria-label="Next slide">
+      <button className={`${styles.navArrow} ${styles.nextArrow}`} onClick={handleNextClick} aria-label="Next slide">
         <span className={styles.icon}>
           <i className="fa fa-chevron-right"></i>
         </span>
