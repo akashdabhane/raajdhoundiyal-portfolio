@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./AwardsSection.module.css";
 
@@ -22,34 +22,15 @@ const awardsData = [
   },
 ];
 
-const AUTO_ADVANCE_INTERVAL = 3000;
-
 export default function AwardsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const restartAutoAdvance = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % awardsData.length);
-    }, AUTO_ADVANCE_INTERVAL);
-  };
-
-  useEffect(() => {
-    restartAutoAdvance();
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, []);
 
   const prevAward = () => {
     setCurrentIndex((prev) => (prev - 1 + awardsData.length) % awardsData.length);
-    restartAutoAdvance();
   };
 
   const nextAward = () => {
     setCurrentIndex((prev) => (prev + 1) % awardsData.length);
-    restartAutoAdvance();
   };
 
   return (
@@ -59,7 +40,7 @@ export default function AwardsSection() {
           src="/award-background.jpg"
           alt="Award background"
           fill
-          style={{ objectFit: "cover" }}
+          className={styles.bgImageFile}
           priority
         />
         <div className={styles.overlay}></div>
