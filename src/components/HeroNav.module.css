@@ -11,17 +11,13 @@
   align-items: center;
   z-index: 1000;
   background: transparent;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navScrolled {
-  background-color: #333333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.navbarLight {
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(20, 20, 20, 0.95);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 .logo {
@@ -62,10 +58,6 @@
   transition: width 0.3s ease;
 }
 
-.navLinkLight {
-  color: #8d8d8d;
-}
-
 .navLink:hover {
   color: #ff6b35;
 }
@@ -79,31 +71,26 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 4px;
-  transition: all 0.3s;
-}
-
-.burgerMenu:hover {
-  background-color: rgba(255, 107, 53, 0.1);
+  transition: all 0.3s ease;
 }
 
 .burgerMenu i {
-  color: #333333;
+  color: #ffffff;
   font-size: 24px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .burgerMenu:hover i {
   color: #ff6b35;
-  transform: scale(1.1);
 }
 
 .mobileMenu {
   position: fixed;
-  top: 100px;
+  top: 80px;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 100px);
-  background: rgba(255, 255, 255, 0.98);
+  height: calc(100vh - 80px);
+  background: rgba(10, 10, 10, 0.98);
   backdrop-filter: blur(10px);
   z-index: 999;
   display: none;
@@ -112,7 +99,6 @@
   align-items: center;
   gap: 40px;
   opacity: 0;
-  overflow: hidden;
   transform: translateY(-100%);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -124,67 +110,19 @@
 }
 
 .mobileNavLink {
-  color: #333333;
-  font-size: 28px;
+  color: #ffffff;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: 8px;
   position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s;
-}
-
-.mobileNavLink:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 0;
-  height: 100%;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #ff6b35, #ff8c42);
-  transition: width 0.3s;
-}
-
-.mobileNavLink:hover:before {
-  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .mobileNavLink:hover {
-  color: #ffffff;
-  transform: scale(1.05) translateY(0);
-}
-
-.mobileMenu.open .mobileNavLink {
-  animation: fadeInUp 0.6s forwards;
-}
-
-.mobileMenu.open .mobileNavLink:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.mobileMenu.open .mobileNavLink:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.mobileMenu.open .mobileNavLink:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.mobileMenu.open .mobileNavLink:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  color: #ff6b35;
 }
 
 /* Hero Section */
@@ -210,14 +148,15 @@
   background-size: cover;
   opacity: 0;
   z-index: 1;
-  transition: opacity 1s ease-in-out;
-  transform: none;
+  transform: scale(1);
+  transition: opacity 1s ease-in-out, transform 6s ease-out;
+  will-change: opacity, transform;
 }
 
 .slide.active {
   opacity: 1;
   z-index: 2;
-  transform: none;
+  transform: scale(1.05);
 }
 
 .slideContent {
@@ -226,6 +165,14 @@
   max-width: 1200px;
   padding: 0 20px;
   z-index: 3;
+}
+
+.textContent {
+  will-change: transform, opacity;
+}
+
+.slide.active .textContent {
+  animation: slideInContent 0.8s ease-out forwards;
 }
 
 .upperText {
@@ -330,6 +277,17 @@
   right: 30px;
 }
 
+@keyframes slideInContent {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes slideInDown {
   from {
     opacity: 0;
@@ -360,28 +318,16 @@
 }
 
 /* Responsive Breakpoints matching reference CSS */
+@media (max-width: 1400px) {
+  .navbar {
+    padding: 20px 100px;
+  }
+}
+
 @media (max-width: 1024px) {
   .navbar {
-    background: #ffffff;
     padding: 15px 40px;
     height: 80px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  .navScrolled {
-    background-color: #ffffff;
-  }
-  .navLinks {
-    display: none;
-  }
-  .burgerMenu {
-    display: block !important;
-  }
-  .burgerMenu i {
-    color: #333333;
-  }
-  .mobileMenu {
-    height: calc(100vh - 80px);
-    top: 80px;
   }
   .logoImg {
     width: 150px;
@@ -403,13 +349,8 @@
 
 @media (max-width: 768px) {
   .navbar {
-    background: #ffffff;
     padding: 15px 20px;
     height: 70px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  .navScrolled {
-    background-color: #ffffff;
   }
   .navLinks {
     display: none;
@@ -418,22 +359,14 @@
     display: block;
   }
   .burgerMenu i {
-    color: #333333;
-    font-size: 22px;
-  }
-  .mobileMenu {
-    height: calc(100vh - 70px);
-    top: 70px;
-  }
-  .mobileNavLink {
-    font-size: 24px;
+    color: #fff;
   }
   .slide {
     background-position: 50%;
     background-size: auto 100%;
   }
   .slide:first-child {
-    background-position: 80%;
+    background-position: 70%;
   }
   .slide:nth-child(2) {
     background-position: 65%;
@@ -454,11 +387,6 @@
     padding: 12px 28px;
     font-size: 14px;
   }
-  .navArrow {
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
-  }
   .prevArrow {
     left: 15px;
   }
@@ -468,21 +396,6 @@
 }
 
 @media (max-width: 480px) {
-  .navbar {
-    height: 60px;
-  }
-  .mobileMenu {
-    gap: 30px;
-    height: calc(100vh - 60px);
-    top: 60px;
-  }
-  .mobileNavLink {
-    letter-spacing: 1px;
-    font-size: 20px;
-  }
-  .burgerMenu i {
-    font-size: 20px;
-  }
   .heroCarousel {
     height: 90vh;
   }
@@ -491,10 +404,7 @@
     background-size: auto 90%;
   }
   .slide:first-child {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
-      url("/hero-01-mobile.jpg") !important;
-    background-position: center;
-    background-size: cover;
+    background-position: 70%;
   }
   .slide:nth-child(2) {
     background-position: 65%;
@@ -519,10 +429,5 @@
   .cta {
     padding: 10px 20px;
     font-size: 12px;
-  }
-  .navArrow {
-    width: 34px;
-    height: 34px;
-    font-size: 14px;
   }
 }
