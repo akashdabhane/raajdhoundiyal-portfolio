@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import Image from "next/image";
@@ -40,6 +40,8 @@ export default function MomentsSection() {
                   src={moment.src}
                   alt={moment.alt}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  unoptimized
                   className={styles.image}
                 />
               </div>
@@ -58,19 +60,22 @@ export default function MomentsSection() {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              className={styles.closeButton}
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close modal"
-            >
-              &times;
-            </button>
-            <Image
-              src={selectedImage}
-              alt="Enlarged moment"
-              fill
-              style={{ objectFit: "contain" }}
-            />
+            <div className={styles.modalImageWrapper}>
+              <button
+                className={styles.closeButton}
+                onClick={() => setSelectedImage(null)}
+                aria-label="Close modal"
+              >
+                &times;
+              </button>
+              <Image
+                src={selectedImage}
+                alt="Enlarged moment"
+                fill
+                unoptimized
+                style={{ objectFit: "contain" }}
+              />
+            </div>
           </div>
         </div>
       )}
