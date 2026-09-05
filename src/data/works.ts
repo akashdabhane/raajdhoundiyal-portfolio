@@ -616,4 +616,13 @@ export const worksData: Work[] = [
     thumbnail: "https://img.youtube.com/vi/KpddvC9atlc/hqdefault.jpg",
     youtubeId: "KpddvC9atlc",
   },
+  {
+    id: "nuvoco-har-nirmaan-humari-shaan",
+    slug: "nuvoco-har-nirmaan-humari-shaan",
+    title: "Nuvoco - Har Nirmaan Humari Shaan",
+    categories: ["EDITING", "COLOR GRADING"],
+    categorySlugs: ["editing", "color-grading"],
+    thumbnail: "https://img.youtube.com/vi/xD-Cq6hRFnE/hqdefault.jpg",
+    youtubeId: "xD-Cq6hRFnE",
+  }
 ];
