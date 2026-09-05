@@ -22,9 +22,11 @@ export async function POST(request: NextRequest) {
 
   const emailUser = process.env.EMAIL_USER;
   const emailPass = process.env.EMAIL_PASS;
+  const ownerEmail = process.env.OWNER_EMAIL;
 
-  if (!emailUser || !emailPass) {
-    console.error("EMAIL_USER / EMAIL_PASS are not configured.");
+
+  if (!emailUser || !emailPass || !ownerEmail) {
+    console.error("EMAIL_USER / EMAIL_PASS / OWNER_EMAIL are not configured.");
     return NextResponse.json(
       { error: "Email service is not configured." },
       { status: 500 }
@@ -42,11 +44,11 @@ export async function POST(request: NextRequest) {
   try {
     await transporter.sendMail({
       from: `"${name}" <${emailUser}>`,
-      to: emailUser,
+      to: ownerEmail,
       replyTo: email,
       subject: subject
         ? `New enquiry: ${subject}`
-        : "New enquiry from website contact form",
+        : "New enquiry from website (portfolio) contact form",
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject || "-"}\n\n${message || ""}`,
       html: `
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
@@ -58,7 +60,7 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, message: "Email sent successfully.", status: 200 });
   } catch (error) {
     console.error("Failed to send contact email", error);
     return NextResponse.json(
