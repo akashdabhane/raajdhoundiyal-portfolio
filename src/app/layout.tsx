@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "Raaj Dhoundiyal",
   description: "Professional Photography Portfolio",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon2.jpg",
   },
 };
 
